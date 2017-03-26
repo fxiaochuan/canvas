@@ -19,18 +19,33 @@ var ctx=canvas.getContext('2d');
 // ctx.lineTo(0,0);
 
 //创建渐变
-var grd=ctx.createLinearGradient(0,0,400,0);    //x1赋值就是水平渐变，y1赋值就是垂直渐变，而且赋值时必须与矩形宽或高相同，否则渐变范围不正确
-grd.addColorStop(0,'red');
-grd.addColorStop(0.4,'blue');
-grd.addColorStop(0.7,'yellow');
-grd.addColorStop(1,'orange');
-ctx.fillStyle=grd;
-ctx.fillRect(10,10,400,300);
+// var grd=ctx.createLinearGradient(0,0,400,0);    //x1赋值就是水平渐变，y1赋值就是垂直渐变，而且赋值时必须与矩形宽或高相同，否则渐变范围不正确
+// grd.addColorStop(0,'red');
+// grd.addColorStop(0.4,'blue');
+// grd.addColorStop(0.7,'yellow');
+// grd.addColorStop(1,'orange');
+// ctx.fillStyle=grd;
+// ctx.fillRect(10,10,400,300);
 
 //画圆形
 // ctx.arc(95,60,50,0,2*Math.PI);
 // ctx.stroke();
 //ctx.fill();
+
+//矩阵变换
+ctx.translate(200,20);
+for(var i=1;i<80;i++){
+	ctx.save();//暂时将当前的状态保存到堆中
+	ctx.translate(30,30);//移动，dx,dy分别表示坐标原点沿水平和垂直两个方向的偏移量。
+	ctx.scale(0.95,0.95); //缩放，其中x为x轴的缩放，y为y轴的缩放，如果要缩小，值为小于1的数值，如果要放大，值为大于1的数值。
+	ctx.rotate(Math.PI/12);//旋转，该方法只有一个参数 旋转角度angle，旋转角度以顺时针方向为正方向，以弧度为单位，旋转中心为canvas的原点。
+	ctx.beginPath(); //开始一段新路径
+	ctx.fillStyle='red';
+	ctx.globalAlpha='0.4';
+	ctx.arc(0,0,50,0,Math.PI*2,true);
+	ctx.closePath();
+	ctx.fill();
+}
 
 </script>
 
