@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<canvas id='myCanvas' width="500" height="500"
+style="border:1px solid #000000;"></canvas>
+
+<script type="text/javascript">
+
+var canvas=document.getElementById('myCanvas');
+var ctx=canvas.getContext('2d');
+//ctx.fillStyle='#FF0000';
+
+//画直线，lineTo()每次都从终点开始画
+// ctx.moveTo(0,0);
+// ctx.lineTo(300,300);
+// ctx.lineTo(300,200);
+// ctx.lineTo(200,100);
+// ctx.lineTo(250,50);
+// ctx.lineTo(0,0);
+
+//创建渐变
+var grd=ctx.createLinearGradient(0,0,400,0);    //x1赋值就是水平渐变，y1赋值就是垂直渐变，而且赋值时必须与矩形宽或高相同，否则渐变范围不正确
+grd.addColorStop(0,'red');
+grd.addColorStop(0.4,'blue');
+grd.addColorStop(0.7,'yellow');
+grd.addColorStop(1,'orange');
+ctx.fillStyle=grd;
+ctx.fillRect(10,10,400,300);
+
+//画圆形
+// ctx.arc(95,60,50,0,2*Math.PI);
+// ctx.stroke();
+//ctx.fill();
+
+</script>
+
+</body>
+</html>
